@@ -1,10 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-
+import thunkMiddleware from 'redux-thunk';
+import { commentsReducer } from '../Comments/Comments.reducers';
+import { postsReducer } from '../Posts/Posts.reducers';
+// import counterReducer from '../features/counter/counterSlice';
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    posts: postsReducer,
+    comments: commentsReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(thunkMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

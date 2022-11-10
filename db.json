@@ -1,0 +1,124 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "bla",
+            "body": "sdf sd vxcv sdf we sdf cxv sdf wef dfds gfdg f fsd fsd",
+            "username": "Dmitriy"
+        },
+        {
+            "id": 2,
+            "title": "blaaaaaaaaa",
+            "body": "sdf cxv ds fds fds fs f",
+            "username": "Dima"
+        },
+        {
+            "id": 3,
+            "title": "blabla",
+            "body": "sdf cx v sf we sd fwef sdf dsfcv dsf sdfdsf xcv df sdf sdf dsfdsf df",
+            "username": "Dmytro"
+        },
+        {
+            "id": 4,
+            "title": "blablabla",
+            "body": "sdfsdfsdfsdfsdfsdfsdfxcvc vxcv sdf sdf ds f",
+            "username": "Dmitriy"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "postId": 1,
+            "body": "C'est vraiment génial",
+            "username": "Jean-Paul Sartre",
+            "tagIds": [1, 2],
+            "replayIds": [1, 2, 3]
+        },
+        {
+            "id": 2,
+            "postId": 1,
+            "body": "C'est très stupide",
+            "username": "Jacques Derrida",
+            "tagIds": [1],
+            "replayIds": []
+        },
+        {
+            "id": 3,
+            "postId": 2,
+            "body": "C'est vraiment génial",
+            "username": "Jean-Paul Sartre",
+            "tagIds": [3],
+            "replayIds": []
+        },
+        {
+            "id": 4,
+            "postId": 3,
+            "body": "C'est très stupide",
+            "username": "Jacques Derrida",
+            "tagIds": [],
+            "replayIds": []
+        },
+        {
+            "id": 5,
+            "postId": 3,
+            "body": "J'adore ça!",
+            "username": "Jean Baudrillard",
+            "tagIds": [1],
+            "replayIds": [4, 5]
+        },
+        {
+            "id": 6,
+            "postId": 4,
+            "body": "C'est très stupide",
+            "username": "Jacques Derrida",
+            "tagIds": [2, 3],
+            "replayIds": []
+        }
+    ],
+    "tags": [
+        {
+            "id": 1,
+            "name": "sport"
+        },
+        {
+            "id": 1,
+            "name": "travel"
+        },
+        {
+            "id": 1,
+            "name": "art"
+        }
+    ],
+    "replies": [
+        {
+            "id": 1,
+            "commentId": 1,
+            "body": "Ahahah",
+            "username": "Plato"
+        },
+        {
+            "id": 2,
+            "commentId": 1,
+            "body": "Ok",
+            "username": "Jacques Derrida"
+        },
+        {
+            "id": 3,
+            "commentId": 1,
+            "body": "Pffff",
+            "username": "Plato"
+        },
+        {
+            "id": 4,
+            "commentId": 5,
+            "body": "Ok",
+            "username": "Plato"
+        },
+        {
+            "id": 5,
+            "commentId": 5,
+            "body": "......",
+            "username": "Plato"
+        }
+    ]
+}
