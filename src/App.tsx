@@ -5,6 +5,7 @@ import { Comments } from './Comments/Comments';
 import { fetchPosts } from './Posts/Posts.thunks';
 import { useAppDispatch } from './app/hooks';
 import { fetchComments, fetchReplies, fetchTags } from './Comments/Comments.thunks';
+import {testIds} from './App.testIds';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,9 +18,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" data-test-id={testIds.post(1)}>
       <Posts />
-      <Comments />
+      <Comments postId={1} />
     </div>
   );
 }

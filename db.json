@@ -3,7 +3,7 @@
         {
             "id": 1,
             "title": "bla",
-            "body": "sdf sd vxcv sdf we sdf cxv sdf wef dfds gfdg f fsd fsd",
+            "body": "SDF",
             "username": "Dmitriy"
         },
         {
@@ -81,11 +81,11 @@
             "name": "sport"
         },
         {
-            "id": 1,
+            "id": 2,
             "name": "travel"
         },
         {
-            "id": 1,
+            "id": 3,
             "name": "art"
         }
     ],
