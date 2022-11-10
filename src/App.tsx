@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App" data-test-id={testIds.post(1)}>
-      <Posts />
+      <Posts selectedPostId={1} />
       <Comments postId={1} />
     </div>
   );

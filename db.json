@@ -32,7 +32,7 @@
             "body": "C'est vraiment génial",
             "username": "Jean-Paul Sartre",
             "tagIds": [1, 2],
-            "replayIds": [1, 2, 3]
+            "replyIds": [1, 2, 3]
         },
         {
             "id": 2,
@@ -40,7 +40,7 @@
             "body": "C'est très stupide",
             "username": "Jacques Derrida",
             "tagIds": [1],
-            "replayIds": []
+            "replyIds": []
         },
         {
             "id": 3,
@@ -48,7 +48,7 @@
             "body": "C'est vraiment génial",
             "username": "Jean-Paul Sartre",
             "tagIds": [3],
-            "replayIds": []
+            "replyIds": []
         },
         {
             "id": 4,
@@ -56,7 +56,7 @@
             "body": "C'est très stupide",
             "username": "Jacques Derrida",
             "tagIds": [],
-            "replayIds": []
+            "replyIds": []
         },
         {
             "id": 5,
@@ -64,7 +64,7 @@
             "body": "J'adore ça!",
             "username": "Jean Baudrillard",
             "tagIds": [1],
-            "replayIds": [4, 5]
+            "replyIds": [4, 5]
         },
         {
             "id": 6,
@@ -72,7 +72,7 @@
             "body": "C'est très stupide",
             "username": "Jacques Derrida",
             "tagIds": [2, 3],
-            "replayIds": []
+            "replyIds": []
         }
     ],
     "tags": [

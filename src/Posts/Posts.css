@@ -1,0 +1,24 @@
+.Posts {
+    width: 320px;
+}
+
+.Posts__list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 0;
+    overflow: auto;
+}
+
+.Posts__post {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.Posts__post--selected {
+    background-color: lightblue;
+}
+
+.Posts__input {
+    width: 100%;
+}

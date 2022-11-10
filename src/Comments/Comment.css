@@ -1,0 +1,16 @@
+.Comment {
+    margin-top: 10px;
+}
+
+.Comment__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Comment__tags {
+    display: flex;
+}
+
+.ReplySubmit {
+    display: flex;
+}
