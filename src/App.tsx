@@ -6,7 +6,7 @@ import { fetchPosts } from './Posts/Posts.thunks';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchComments, fetchReplies, fetchTags } from './Comments/Comments.thunks';
 import { testIds } from './App.testIds';
-import { Post, User } from './interfaces';
+import { Post } from './interfaces';
 import { appActionCreators } from './App.actions';
 import { appSelectors } from './App.selectors';
 import { fetchUser } from './App.thunks';
@@ -22,7 +22,7 @@ function App() {
     dispatch(fetchReplies());
     dispatch(fetchTags());
     dispatch(fetchUser());
-  }, []);
+  }, [dispatch]);
   
   const handlePostSelect = (post: Post) => {
     dispatch(appActionCreators.selectPost(post.id));

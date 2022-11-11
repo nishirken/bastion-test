@@ -1,5 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getComments, getPosts } from "../api";
+import { getPosts } from "../api";
 import { AppThunk } from "../app/store";
 import { postsActionCreators } from "./Posts.actions";
 

@@ -5,7 +5,6 @@ import { Comment } from './Comment';
 import { Comment as IComment, User } from '../interfaces';
 import './Comments.css';
 import { testIds } from '../App.testIds';
-import { commentsActionCreators } from './Comments.actions';
 import { createReply, updateTags } from './Comments.thunks';
 
 export type CommentsProps = {

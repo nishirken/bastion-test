@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import { testIds } from '../App.testIds';
-import { Comment as IComment, CommentReply, CommentTag, User } from '../interfaces';
+import { Comment as IComment, CommentReply, CommentTag } from '../interfaces';
 import { AddTag } from './AddTag';
 import { Replies } from './Replies';
 import { AddReply } from './AddReply';
