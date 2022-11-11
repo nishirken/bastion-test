@@ -4,15 +4,22 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import { testIds } from '../App.testIds';
-import { Comment as IComment, CommentReply, CommentTag } from '../interfaces';
-import {ReplySubmit} from './ReplySubmit';
-import {AddTag} from './AddTag';
-import {Replies} from './Replies';
+import { Comment as IComment, CommentReply, CommentTag, User } from '../interfaces';
+import { AddTag } from './AddTag';
+import { Replies } from './Replies';
+import { AddReply } from './AddReply';
 import './Comment.css';
 
-type CommentProps = {comment: IComment; allTags: CommentTag[]; commentTags: CommentTag[]; commentReplies: CommentReply[]};
+type CommentProps = {
+    comment: IComment;
+    allTags: CommentTag[];
+    commentTags: CommentTag[];
+    commentReplies: CommentReply[];
+    onNewReply(reply: string): void;
+    onNewTag(newTagId: number): void;
+};
 
-export const Comment: React.FC<CommentProps> = ({comment, allTags, commentTags, commentReplies}) => {
+export const Comment: React.FC<CommentProps> = ({comment, allTags, commentTags, commentReplies, onNewReply, onNewTag}) => {
     const availableTags = allTags.filter(tag => !commentTags.map(({id}) => id).includes(tag.id));
 
     return (
@@ -31,8 +38,8 @@ export const Comment: React.FC<CommentProps> = ({comment, allTags, commentTags, 
                 </Typography>
             </CardContent>
             <CardActions>
-                <ReplySubmit onSubmit={console.log} />
-                {availableTags.length !== 0 && <AddTag onSubmit={console.log} tagSuggests={availableTags} />}
+                <AddReply onSubmit={onNewReply} commentId={comment.id} />
+                {availableTags.length !== 0 && <AddTag onSubmit={onNewTag} tagSuggests={availableTags} commentId={comment.id} />}
             </CardActions>
             <CardContent>
                 <Replies replies={commentReplies} />

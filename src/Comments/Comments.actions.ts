@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { Comment, CommentReply, CommentTag } from "../interfaces";
+import { Comment, CommentReply, CommentTag, NewCommentReply } from "../interfaces";
 
 export const commentsActionCreators = {
     fetchCommentsSuccess: createAction<Comment[]>('FETCH_COMMENTS_SUCCESS'),
@@ -11,9 +11,9 @@ export const commentsActionCreators = {
     fetchTagsSuccess: createAction<CommentTag[]>('FETCH_TAGS_SUCCESS'),
     fetchTagsError: createAction('FETCH_TAGS_ERROR'),
 
-    addTagSuccess: createAction('ADD_TAG_SUCCESS'),
+    addTagSuccess: createAction<{commentId: number; tagsIds: number[]}>('ADD_TAG_SUCCESS'),
     addTagError: createAction('ADD_TAG_ERROR'),
 
-    createReplySuccess: createAction('CREATE_REPLY_SUCCESS'),
+    createReplySuccess: createAction<NewCommentReply>('CREATE_REPLY_SUCCESS'),
     createReplyError: createAction('CREATE_REPLY_ERROR'),
 };

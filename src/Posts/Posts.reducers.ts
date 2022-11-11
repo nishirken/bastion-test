@@ -3,16 +3,24 @@ import { Post } from "../interfaces";
 import { postsActionCreators } from "./Posts.actions";
 
 export type PostsState = {
-    posts: Post[];
+    shownPosts: Post[];
+    allPosts: Post[];
 };
 
 const initialState: PostsState = {
-    posts: [],
+    allPosts: [],
+    shownPosts: [],
 };
 
 export const postsReducer = createReducer(initialState, builder => {
     builder
         .addCase(postsActionCreators.fetchPostsSuccess.toString(), (state, action: PayloadAction<Post[]>) => {
-            state.posts = action.payload;
+            state.allPosts = action.payload;
+            state.shownPosts = action.payload;
+        })
+        .addCase(postsActionCreators.filterPosts.toString(), (state, action: PayloadAction<string>) => {
+            state.shownPosts = state.allPosts.filter(({title, username}) => {
+                return title.includes(action.payload) || username.includes(action.payload);
+            });
         });
 });

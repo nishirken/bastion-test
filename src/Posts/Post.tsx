@@ -5,9 +5,19 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { testIds } from '../App.testIds';
 
-export const Post: React.FC<{post: IPost; selected: boolean}> = ({post, selected}) => {
+type PostProps = {
+    onPostSelect(post: IPost): void;
+    post: IPost;
+    selected: boolean;
+};
+
+export const Post: React.FC<PostProps> = ({post, selected, onPostSelect}) => {
     return (
-        <Card data-test-id={testIds.post(post.id)} className={`Posts__post ${selected ? 'Posts__post--selected' : ''}`}>
+        <Card
+            data-test-id={testIds.post(post.id)}
+            className={`Posts__post ${selected ? 'Posts__post--selected' : ''}`}
+            onClick={() => onPostSelect(post)}
+        >
             <CardContent>
             <Typography variant='h6' color="text.secondary" gutterBottom data-test-id={testIds.postTitle(post.id)}>
                 {post.title}

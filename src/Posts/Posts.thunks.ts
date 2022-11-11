@@ -9,6 +9,6 @@ export const fetchPosts = (): AppThunk => async (dispatch) => {
 
       dispatch(postsActionCreators.fetchPostsSuccess(response));
     } catch (e) {
-      dispatch(postsActionCreators.fetchPostsError);
+      dispatch(postsActionCreators.fetchPostsError());
     }
   };

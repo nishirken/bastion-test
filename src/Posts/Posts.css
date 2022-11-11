@@ -16,7 +16,7 @@
 }
 
 .Posts__post--selected {
-    background-color: lightblue;
+    background-color: lightblue !important;
 }
 
 .Posts__input {

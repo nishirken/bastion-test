@@ -1,4 +1,3 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getComments, getReplies, getTags, updateCommentTags } from "../api";
 import { AppThunk } from "../app/store";
 import { NewCommentReply } from "../interfaces";
@@ -10,7 +9,7 @@ export const fetchComments = (): AppThunk => async (dispatch) => {
 
       dispatch(commentsActionCreators.fetchCommentsSuccess(response));
     } catch (e) {
-      dispatch(commentsActionCreators.fetchCommentsError);
+      dispatch(commentsActionCreators.fetchCommentsError());
     }
   };
 
@@ -20,7 +19,7 @@ export const fetchReplies = (): AppThunk => async (dispatch) => {
 
         dispatch(commentsActionCreators.fetchRepliesSuccess(response));
     } catch (e) {
-        dispatch(commentsActionCreators.fetchRepliesError);
+        dispatch(commentsActionCreators.fetchRepliesError());
     }
 };
 
@@ -30,7 +29,7 @@ export const fetchTags = (): AppThunk => async (dispatch) => {
 
         dispatch(commentsActionCreators.fetchTagsSuccess(response));
     } catch (e) {
-        dispatch(commentsActionCreators.fetchTagsError);
+        dispatch(commentsActionCreators.fetchTagsError());
     }
 };
 
@@ -38,18 +37,18 @@ export const createReply = (reply: NewCommentReply): AppThunk => async (dispatch
     try {
         await createReply(reply);
 
-        dispatch(commentsActionCreators.createReplySuccess);
+        dispatch(commentsActionCreators.createReplySuccess(reply));
     } catch (e) {
-        dispatch(commentsActionCreators.createReplyError);
+        dispatch(commentsActionCreators.createReplyError());
     }
 };
 
-export const updateTags = (tagsIds: number[]): AppThunk => async (dispatch, getState) => {
+export const updateTags = (commentId: number, tagsIds: number[]): AppThunk => async (dispatch) => {
     try {
-        await updateCommentTags(tagsIds);
+        await updateCommentTags(commentId, tagsIds);
 
-        dispatch(commentsActionCreators.createReplySuccess);
+        dispatch(commentsActionCreators.addTagSuccess({commentId, tagsIds}));
     } catch (e) {
-        dispatch(commentsActionCreators.createReplyError);
+        dispatch(commentsActionCreators.addTagError());
     }
 };
