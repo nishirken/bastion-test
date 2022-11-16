@@ -30,14 +30,14 @@ export const Comment: React.FC<CommentProps> = ({comment, allTags, commentTags, 
                         {comment.body}
                     </Typography>
                     <Typography variant="body2" data-test-id={testIds.tags(comment.id)}>
-                        <span className="Comment__tags">{commentTags.map((tag) => <span data-test-id={testIds.tag(tag.id, comment.id)} key={tag.id}>#{tag.name}</span>)}</span>
+                        <span className="Comment__tags">{commentTags.map((tag) => <span className='Comment__tag' data-test-id={testIds.tag(tag.id, comment.id)} key={tag.id}>#{tag.name}</span>)}</span>
                     </Typography>
                 </div>
                 <Typography variant="caption" color="text.secondary" data-test-id={testIds.commentUsername(comment.id)}>
                     {comment.username}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions className='Comment__actions'>
                 <AddReply onSubmit={onNewReply} commentId={comment.id} />
                 {availableTags.length !== 0 && <AddTag onSubmit={onNewTag} tagSuggests={availableTags} commentId={comment.id} />}
             </CardActions>

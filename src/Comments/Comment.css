@@ -11,6 +11,14 @@
     display: flex;
 }
 
+.Comment__tag:not(:last-child) {
+    margin-right: 10px;
+}
+
+.Comment__actions {
+    height: 72px;
+}
+
 .ReplySubmit {
     display: flex;
 }
