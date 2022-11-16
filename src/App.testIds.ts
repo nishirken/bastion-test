@@ -14,6 +14,7 @@ export const testIds = {
     commentReplySubmit: (commentId: number) => `comment-reply-submit-${commentId}`,
     reply: (id: number, commentId: number) => `comment-reply-${commentId}-${id}`,
     tag: (id: number, commentId: number) => `comment-tag-${commentId}-${id}`,
+    tags: (commentId: number) => `tags-${commentId}`,
     addTag: (commentId: number) => `comment-add-tag-${commentId}`,
     addTagInput: (commentId: number) => `comment-tag-input-${commentId}`,
     addTagSuggest: (tagId: number) => `comment-tag-suggest-${tagId}`,
@@ -23,7 +24,7 @@ export const mkSelector = (id: string) => `[data-test-id="${id}"]`;
 
 export const testIdSelectors = {
     posts: mkSelector(testIds.posts),
-    postsFilter: mkSelector(testIds.postsFilter),
+    postsFilter: `${mkSelector(testIds.postsFilter)} input`,
     post: (id: number) => mkSelector(testIds.post(id)),
     postBody: (postId: number) => mkSelector(testIds.postBody(postId)),
     postTitle: (postId: number) => mkSelector(testIds.postTitle(postId)),
@@ -33,11 +34,12 @@ export const testIdSelectors = {
     commentUsername: (id: number) => mkSelector(testIds.commentUsername(id)),
     commentBody: (id: number) => mkSelector(testIds.commentBody(id)),
     commentNewReply: (commentId: number) => mkSelector(testIds.commentNewReply(commentId)),
-    commentReplyInput: (commentId: number) => mkSelector(testIds.commentReplyInput(commentId)),
-    commentReplySubmit: (commentId: number) => mkSelector(testIds.commentReplyInput(commentId)),
+    commentReplyInput: (commentId: number) => `${mkSelector(testIds.commentReplyInput(commentId))} input`,
+    commentReplySubmit: (commentId: number) => mkSelector(testIds.commentReplySubmit(commentId)),
     reply: (id: number, commentId: number) => mkSelector(testIds.reply(id, commentId)),
     tag: (id: number, commentId: number) => mkSelector(testIds.tag(id, commentId)),
+    tags: (commentId: number) => mkSelector(testIds.tags(commentId)),
     addTag: (commentId: number) => mkSelector(testIds.addTag(commentId)),
-    addTagInput: (commentId: number) => mkSelector(testIds.addTagInput(commentId)),
+    addTagInput: (commentId: number) => `${mkSelector(testIds.addTagInput(commentId))} input`,
     addTagSuggest: (tagId: number) => mkSelector(testIds.addTagSuggest(tagId)),
 };

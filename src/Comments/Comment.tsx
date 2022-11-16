@@ -29,7 +29,7 @@ export const Comment: React.FC<CommentProps> = ({comment, allTags, commentTags, 
                     <Typography variant="body2" data-test-id={testIds.commentBody(comment.id)}>
                         {comment.body}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" data-test-id={testIds.tags(comment.id)}>
                         <span className="Comment__tags">{commentTags.map((tag) => <span data-test-id={testIds.tag(tag.id, comment.id)} key={tag.id}>#{tag.name}</span>)}</span>
                     </Typography>
                 </div>

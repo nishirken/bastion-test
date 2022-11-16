@@ -5,7 +5,6 @@ import { Comments } from './Comments/Comments';
 import { fetchPosts } from './Posts/Posts.thunks';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchComments, fetchReplies, fetchTags } from './Comments/Comments.thunks';
-import { testIds } from './App.testIds';
 import { Post } from './interfaces';
 import { appActionCreators } from './App.actions';
 import { appSelectors } from './App.selectors';
@@ -29,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="App" data-test-id={testIds.post(1)}>
+    <div className="App">
       <Posts selectedPostId={postId} onPostSelect={handlePostSelect} />
       {postId && user && <Comments postId={postId} user={user} />}
     </div>

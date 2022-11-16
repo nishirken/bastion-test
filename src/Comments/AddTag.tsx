@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import AutoComplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import ListItem from '@mui/material/ListItem';
 import { testIds } from '../App.testIds';
 
 type AddTagProps = {
@@ -28,10 +29,10 @@ export const AddTag: React.FC<AddTagProps> = (props) => {
             disablePortal
             options={options}
             sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="New tag" />}
+            renderOption={(props, option) => <ListItem {...props} data-test-id={testIds.addTagSuggest(option.value)} >{option.label}</ListItem>}
+            renderInput={(params) => <TextField data-test-id={testIds.addTagInput(props.commentId)} {...params} label="New tag" />}
             onChange={(_, option) => handleChange(option?.value)}
             onClose={() => setIsOpened(false)}
-            data-test-id={testIds.addTagInput(props.commentId)}
         />
-    ) : <Button onClick={() => setIsOpened(true)}>Add tag</Button>
+    ) : <Button data-test-id={testIds.addTag(props.commentId)} onClick={() => setIsOpened(true)}>Add tag</Button>
 };

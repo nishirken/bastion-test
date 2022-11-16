@@ -30,7 +30,7 @@ test.describe('Posts filter', () => {
     test('By title', async ({ page }) => {
         const container = await page.waitForSelector(testIdSelectors.posts);
         const filter = await container.waitForSelector(testIdSelectors.postsFilter);
-        await filter.type('blaaa');
+        await filter.fill('blaaa');
         await expect(container.waitForSelector(testIdSelectors.post(1), {state: 'detached'})).resolves.toBeNull();
         await expect(container.waitForSelector(testIdSelectors.post(2))).resolves.not.toBeNull();
     });
@@ -38,7 +38,7 @@ test.describe('Posts filter', () => {
     test('By username', async ({ page }) => {
         const container = await page.waitForSelector(testIdSelectors.posts);
         const filter = await container.waitForSelector(testIdSelectors.postsFilter);
-        await filter.type('Dmitriy');
+        await filter.fill('Dmitriy');
         // Strange, but the expectations order matters
         await expect(container.waitForSelector(testIdSelectors.post(2), {state: 'detached'})).resolves.toBeNull();
         await expect(container.waitForSelector(testIdSelectors.post(1))).resolves.not.toBeNull();
@@ -74,8 +74,7 @@ test('Comment shows replies', async ({ page }) => {
     }
 });
 
-// TODO: fix tests
-test.skip('Add reply', async ({ page }) => {
+test('Add reply', async ({ page }) => {
     const posts = await page.waitForSelector(testIdSelectors.posts);
     const post = await posts.waitForSelector(testIdSelectors.post(1));
 
@@ -88,10 +87,10 @@ test.skip('Add reply', async ({ page }) => {
     
     await commentReply.click();
 
-    const input = await comments.waitForSelector(`${testIdSelectors.commentReplyInput(commentId)} input`);
+    const input = await comments.waitForSelector(testIdSelectors.commentReplyInput(commentId));
     const submit = await comments.waitForSelector(testIdSelectors.commentReplySubmit(commentId));
 
-    await input.type('NewReply');
+    await input.fill('NewReply');
 
     await submit?.click();
 
@@ -99,7 +98,7 @@ test.skip('Add reply', async ({ page }) => {
     await expect(comments.waitForSelector(testIdSelectors.commentReplyInput(commentId), {state: 'detached'})).resolves.toBeNull();
 });
 
-test.skip('Add tag', async ({ page }) => {
+test('Add tag', async ({ page }) => {
     const posts = await page.waitForSelector(testIdSelectors.posts);
     const post = await posts.waitForSelector(testIdSelectors.post(1));
 
@@ -108,16 +107,17 @@ test.skip('Add tag', async ({ page }) => {
     const commentId = 1;
 
     const comments = await page.waitForSelector(testIdSelectors.comments);
-    const comment = await comments.waitForSelector(testIdSelectors.comment(commentId));
-    const addTag = await comment.$(testIdSelectors.addTag(commentId));
+    const addTag = await comments.$(testIdSelectors.addTag(commentId));
 
     await addTag?.click();
+    
+    const input = await comments.waitForSelector(testIdSelectors.addTagInput(commentId));
 
-    const input = await comment.waitForSelector(testIdSelectors.addTagInput(commentId));
-    input.type('ar');
-    const suggest = await comment.waitForSelector(testIdSelectors.addTagSuggest(3));
+    await input.fill('ar');
+    const suggest = await comments.waitForSelector(testIdSelectors.addTagSuggest(3));
     
     await suggest.click();
 
-    await expect(comment.waitForSelector(testIdSelectors.tag(3, commentId))).resolves.not.toBeNull();
+    await expect(comments.waitForSelector(testIdSelectors.tag(3, commentId))).resolves.not.toBeNull();
+    await expect(comments.waitForSelector(testIdSelectors.addTag(commentId), {state: 'detached'})).resolves.toBeNull();
 });
