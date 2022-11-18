@@ -4,3 +4,8 @@
     width: 100%;
     padding: 0 20px;
 }
+
+.Comments__skeleton {
+    padding: 10px 0;
+    width: 100%;
+}

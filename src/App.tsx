@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Posts } from './Posts/Posts';
 import { Comments } from './Comments/Comments';
-import { fetchPosts } from './Posts/Posts.thunks';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { fetchComments, fetchReplies, fetchTags } from './Comments/Comments.thunks';
 import { Post } from './interfaces';
 import { appActionCreators } from './App.actions';
 import { appSelectors } from './App.selectors';
@@ -16,10 +14,6 @@ function App() {
   const user = useAppSelector(appSelectors.user);
 
   useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchComments());
-    dispatch(fetchReplies());
-    dispatch(fetchTags());
     dispatch(fetchUser());
   }, [dispatch]);
   

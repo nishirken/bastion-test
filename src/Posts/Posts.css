@@ -11,6 +11,11 @@
     overflow: auto;
 }
 
+.Posts__skeleton {
+    width: 100%;
+    padding: 20px 0;
+}
+
 .Posts__post {
     margin-bottom: 10px;
     cursor: pointer;

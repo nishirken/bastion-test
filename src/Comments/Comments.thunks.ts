@@ -1,9 +1,22 @@
+import { Action, ThunkDispatch } from "@reduxjs/toolkit";
 import { getComments, getReplies, getTags, updateCommentTags } from "../api";
-import { AppThunk } from "../app/store";
+import { AppThunk, RootState } from "../app/store";
 import { NewCommentReply } from "../interfaces";
 import { commentsActionCreators } from "./Comments.actions";
 
-export const fetchComments = (): AppThunk => async (dispatch) => {
+export const fetchCommentsData = (): AppThunk => async (dispatch) => {
+    dispatch(commentsActionCreators.setLoading(true));
+    await Promise.all([
+        fetchComments(dispatch),
+        fetchReplies(dispatch),
+        fetchTags(dispatch),
+    ]);
+    dispatch(commentsActionCreators.setLoading(false));
+};
+
+type Dispatch = ThunkDispatch<RootState, unknown, Action<string>>;
+
+export const fetchComments = async (dispatch: Dispatch) => {
     try {
       const response = await getComments();
 
@@ -13,7 +26,7 @@ export const fetchComments = (): AppThunk => async (dispatch) => {
     }
   };
 
-export const fetchReplies = (): AppThunk => async (dispatch) => {
+export const fetchReplies = async (dispatch: Dispatch) => {
     try {
         const response = await getReplies();
 
@@ -23,7 +36,7 @@ export const fetchReplies = (): AppThunk => async (dispatch) => {
     }
 };
 
-export const fetchTags = (): AppThunk => async (dispatch) => {
+export const fetchTags = async (dispatch: Dispatch) => {
     try {
         const response = await getTags();
 

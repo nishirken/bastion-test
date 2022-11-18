@@ -2,6 +2,8 @@ import { createAction } from "@reduxjs/toolkit";
 import { Comment, CommentReply, CommentTag, NewCommentReply } from "../interfaces";
 
 export const commentsActionCreators = {
+    setLoading: createAction<boolean>('SET_COMMENTS_LOADING'),
+
     fetchCommentsSuccess: createAction<Comment[]>('FETCH_COMMENTS_SUCCESS'),
     fetchCommentsError: createAction('FETCH_COMMENTS_ERROR'),
 

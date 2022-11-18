@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { postsSelectors } from "./Posts.selectors";
 import { Post } from './Post';
@@ -7,6 +7,8 @@ import Input from '@mui/material/Input';
 import { testIds } from '../App.testIds';
 import { postsActionCreators } from './Posts.actions';
 import { Post as IPost } from '../interfaces';
+import { fetchPosts } from './Posts.thunks';
+import { PostsSkeleton } from './PostsSkeleton';
 
 type PostsProps = {
     onPostSelect(post: IPost): void;
@@ -16,6 +18,11 @@ type PostsProps = {
 export const Posts: React.FC<PostsProps> = (props) => {
     const dispatch = useAppDispatch();
     const posts = useAppSelector(postsSelectors.posts);
+    const loading = useAppSelector(postsSelectors.loading);
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, [dispatch]);
 
     const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
         dispatch(postsActionCreators.filterPosts(event.target.value));
@@ -29,11 +36,15 @@ export const Posts: React.FC<PostsProps> = (props) => {
                 className="Posts__input"
                 onChange={handleInputChange}
             />
-            <div className='Posts__list'>
-                {posts.map((post) => (
-                    <Post post={post} key={post.id} selected={post.id === props.selectedPostId} onPostSelect={props.onPostSelect} />
-                ))}
-            </div>
+            {loading ? (
+                <PostsSkeleton />
+            ) : (
+                <div className='Posts__list'>
+                    {posts.map((post) => (
+                        <Post post={post} key={post.id} selected={post.id === props.selectedPostId} onPostSelect={props.onPostSelect} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

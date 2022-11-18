@@ -4,6 +4,7 @@ import { postsActionCreators } from "./Posts.actions";
 
 export const fetchPosts = (): AppThunk => async (dispatch) => {
     try {
+      dispatch(postsActionCreators.fetchPostsStart());
       const response = await getPosts();
 
       dispatch(postsActionCreators.fetchPostsSuccess(response));

@@ -6,12 +6,14 @@ export type CommentsState = {
     comments: Comment[];
     replies: CommentReply[];
     tags: CommentTag[];
+    loading: boolean;
 };
 
 export const initialState: CommentsState = {
     comments: [],
     replies: [],
     tags: [],
+    loading: false,
 };
 
 export const commentsReducer = createReducer(initialState, (builder) => {
@@ -44,5 +46,8 @@ export const commentsReducer = createReducer(initialState, (builder) => {
                 comment.tagIds = action.payload.tagsIds;
             }
         })
+    })
+    .addCase(commentsActionCreators.setLoading.toString(), (state, action: PayloadAction<boolean>) => {
+        state.loading = action.payload;
     });
   });
