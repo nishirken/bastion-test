@@ -3,3 +3,16 @@
   height: 100%;
 }
 
+.App__errors {
+    width: 380px;
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 190px);
+    display: flex;
+    flex-direction: column;
+}
+
+.App__error {
+  margin-bottom: 10px;
+}
+

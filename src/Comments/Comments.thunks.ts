@@ -1,5 +1,6 @@
 import { Action, ThunkDispatch } from "@reduxjs/toolkit";
 import { getComments, getReplies, getTags, updateCommentTags } from "../api";
+import { appActionCreators } from "../App.actions";
 import { AppThunk, RootState } from "../app/store";
 import { NewCommentReply } from "../interfaces";
 import { commentsActionCreators } from "./Comments.actions";
@@ -23,8 +24,9 @@ export const fetchComments = async (dispatch: Dispatch) => {
       dispatch(commentsActionCreators.fetchCommentsSuccess(response));
     } catch (e) {
       dispatch(commentsActionCreators.fetchCommentsError());
+      dispatch(appActionCreators.showError('/comments request'));
     }
-  };
+};
 
 export const fetchReplies = async (dispatch: Dispatch) => {
     try {
@@ -33,6 +35,7 @@ export const fetchReplies = async (dispatch: Dispatch) => {
         dispatch(commentsActionCreators.fetchRepliesSuccess(response));
     } catch (e) {
         dispatch(commentsActionCreators.fetchRepliesError());
+        dispatch(appActionCreators.showError('/replies request'));
     }
 };
 
@@ -43,6 +46,7 @@ export const fetchTags = async (dispatch: Dispatch) => {
         dispatch(commentsActionCreators.fetchTagsSuccess(response));
     } catch (e) {
         dispatch(commentsActionCreators.fetchTagsError());
+        dispatch(appActionCreators.showError('/tags request'));
     }
 };
 

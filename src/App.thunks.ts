@@ -9,5 +9,6 @@ export const fetchUser = (): AppThunk => async (dispatch) => {
       dispatch(appActionCreators.fetchUserSuccess(response));
     } catch (e) {
       dispatch(appActionCreators.fetchUserError());
+      dispatch(appActionCreators.showError('/user request'));
     }
   };
