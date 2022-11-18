@@ -13,7 +13,7 @@ export const Replies: React.FC<RepliesProps> = (props) => {
     return (
         <List sx={{ width: '100%', maxHeight: 300, overflow: 'auto' }}>
             {props.replies.map(reply => (
-                <ListItem key={reply.id} data-test-id={testIds.reply(reply.id, reply.commentId)}>
+                <ListItem key={reply.id} data-test-id={testIds.reply({id: reply.id, commentId: reply.commentId})}>
                     <ListItemText primary={reply.body} secondary={reply.username} />
                 </ListItem>
             ))}

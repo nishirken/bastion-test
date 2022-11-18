@@ -70,7 +70,7 @@ test('Comment shows replies', async ({ page }) => {
     const replyIds = [1, 2, 3];
 
     for (const id of replyIds) {
-        await expect(comments.waitForSelector(testIdSelectors.reply(id, commentId))).resolves.not.toBeNull();
+        await expect(comments.waitForSelector(testIdSelectors.reply({id, commentId}))).resolves.not.toBeNull();
     }
 });
 
@@ -94,7 +94,7 @@ test('Add reply', async ({ page }) => {
 
     await submit?.click();
 
-    await expect(comments.waitForSelector(testIdSelectors.reply(6, commentId))).resolves.not.toBeNull();
+    await expect(comments.waitForSelector(testIdSelectors.reply({id: 6, commentId}))).resolves.not.toBeNull();
     await expect(comments.waitForSelector(testIdSelectors.commentReplyInput(commentId), {state: 'detached'})).resolves.toBeNull();
 });
 
@@ -118,6 +118,6 @@ test('Add tag', async ({ page }) => {
     
     await suggest.click();
 
-    await expect(comments.waitForSelector(testIdSelectors.tag(3, commentId))).resolves.not.toBeNull();
+    await expect(comments.waitForSelector(testIdSelectors.tag({id: 3, commentId}))).resolves.not.toBeNull();
     await expect(comments.waitForSelector(testIdSelectors.addTag(commentId), {state: 'detached'})).resolves.toBeNull();
 });
