@@ -110,16 +110,16 @@ test('Add reply', async ({ page }) => {
     await expect(comments.waitForSelector(testIdSelectors.reply({id: 6, commentId}))).resolves.not.toBeNull();
     await expect(comments.waitForSelector(testIdSelectors.commentReplyInput(commentId), {state: 'detached'})).resolves.toBeNull();
 });
-// TODO: figure out what's going wrong with skeleton
-test.skip('Add tag', async ({ page }) => {
+
+test('Add tag', async ({ page }) => {
     await openPost(page);
 
     const commentId = 1;
 
     const comments = await page.waitForSelector(testIdSelectors.comments);
-    const addTag = await comments.$(testIdSelectors.addTag(commentId));
+    const addTag = await comments.waitForSelector(testIdSelectors.addTag(commentId));
 
-    await addTag?.click();
+    await addTag.click();
     
     const input = await comments.waitForSelector(testIdSelectors.addTagInput(commentId));
 
